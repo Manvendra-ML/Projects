@@ -54,3 +54,21 @@ startButton.addEventListener("click", (e)=>{
             }
     },1000)
 })
+
+
+//// Reset Button functionality
+
+const reset = document.getElementById("reset-btn");
+
+reset.addEventListener("click", () =>{
+    if ( timerInterval == null){
+        return;
+    }
+    else {
+        clearInterval(timerInterval); 
+        timeClock.innerText = "25:00";
+        timerInterval = null;         
+        return;                      
+    }
+
+})
