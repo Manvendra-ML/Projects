@@ -31,6 +31,12 @@ startButton.addEventListener("click", (e)=>{
     if ( timerInterval !== null){
         return;
     }
+    seconds--;
+    let formattedMinutes = String(minutes).padStart(2, '0');
+    let formattedSeconds = String(seconds).padStart(2, '0');
+
+    let time = `${formattedMinutes}:${formattedSeconds}`;
+    timeClock.innerText = time;
 
     
     timerInterval = setInterval(()=>{
@@ -60,15 +66,13 @@ startButton.addEventListener("click", (e)=>{
 
 const reset = document.getElementById("reset-btn");
 
-reset.addEventListener("click", () =>{
-    if ( timerInterval == null){
-        return;
-    }
-    else {
-        clearInterval(timerInterval); 
-        timeClock.innerText = "25:00";
-        timerInterval = null;         
-        return;                      
-    }
+reset.addEventListener("click", (e) =>{
+
+    clearInterval(timerInterval); 
+    timeClock.innerText = "25:00";
+    minutes = 24;
+    seconds = 60;
+    timerInterval = null;         
+    return;                      
 
 })
